@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lucky Spin Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
+    .quiz { max-width: 500px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; text-align: center; }
+    button { background: #ff9900; color: white; border: none; padding: 10px 20px; margin: 10px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #cc7a00; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="quiz">
+    <h2>Are you lucky enough to win 150 free spins?</h2>
+    <div id="step1">
+      <p>Are you over 21 years old?</p>
+      <button onclick="nextStep(2)">Yes</button>
+      <button onclick="fail()">No</button>
+    </div>
+    <div id="step2" class="hidden">
+      <p>Do you play online games?</p>
+      <button onclick="nextStep(3)">Yes</button>
+      <button onclick="fail()">No</button>
+    </div>
+    <div id="step3" class="hidden">
+      <p>Do you want to get your bonus without a deposit?</p>
+      <button onclick="success()">Yes</button>
+      <button onclick="fail()">No</button>
+    </div>
+    <div id="result" class="hidden">
+      <h3>Congratulations!</h3>
+      <p>You are eligible for 2500 free money.</p>
+      <a href="https://beastoff.com/?promo=vipcasino">
+        <button>CLAIM BONUS</button>
+      </a>
+    </div>
+    <div id="fail" class="hidden">
+      <h3>Sorry, you are not eligible.</h3>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(step) {
+      document.getElementById(`step${step-1}`).classList.add("hidden");
+      document.getElementById(`step${step}`).classList.remove("hidden");
+    }
+    function success() {
+      document.getElementById("step3").classList.add("hidden");
+      document.getElementById("result").classList.remove("hidden");
+    }
+    function fail() {
+      document.querySelectorAll(".quiz > div").forEach(el => el.classList.add("hidden"));
+      document.getElementById("fail").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
